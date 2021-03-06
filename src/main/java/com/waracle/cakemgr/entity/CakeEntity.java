@@ -1,5 +1,6 @@
 package com.waracle.cakemgr.entity;
 
+import com.fasterxml.jackson.annotation.JsonAlias;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -15,11 +16,12 @@ public class CakeEntity implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID", unique = true, nullable = false)
-    private Integer id;
+    private Long id;
 
-    @Column(name = "TITLE", unique = true, nullable = false, length = 100)
+    @Column(name = "TITLE", unique = false, nullable = false, length = 100)
     private String title;
 
+    @JsonAlias("desc")
     @Column(name = "DESCRIPTION", unique = false, nullable = false, length = 100)
     private String description;
 
