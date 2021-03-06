@@ -25,8 +25,8 @@ task integrationTest(type: Test) {
 check.dependsOn integrationTest
 
 cucumberReports {
-    reports = files("build\\reports\\cucumber\\cucumber-report.json")
-    outputDir = file("build\\reports\\cucumber")
+    reports = files("build/reports/cucumber/cucumber-report.json")
+    outputDir = file("build/reports/cucumber")
     testTasksFinalizedByReport = false
 }
 integrationTest.finalizedBy generateCucumberReports
