@@ -1,0 +1,33 @@
+import org.gradle.api.internal.tasks.properties.LifecycleAwareValue
+
+sourceSets {
+    integrationTest {
+        compileClasspath += main.output
+        runtimeClasspath += main.output
+    }
+}
+
+configurations {
+    integrationTestImplementation.extendsFrom implementation
+    integrationTestRuntimeOnly.extendsFrom runtimeOnly
+}
+
+task integrationTest(type: Test) {
+    description = 'Runs integration tests.'
+    group = LifecycleBasePlugin.VERIFICATION_GROUP
+
+    testClassesDirs = sourceSets.integrationTest.output.classesDirs
+    classpath = sourceSets.integrationTest.runtimeClasspath
+    shouldRunAfter test
+}
+
+check.dependsOn integrationTest
+
+cucumberReports {
+    reports = files("build\\reports\\cucumber\\cucumber-report.json")
+    outputDir = file("build\\reports\\cucumber")
+    testTasksFinalizedByReport = false
+}
+integrationTest.finalizedBy generateCucumberReports
+
+
