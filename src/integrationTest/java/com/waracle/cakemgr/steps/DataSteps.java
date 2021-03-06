@@ -1,19 +1,22 @@
 package com.waracle.cakemgr.steps;
 
-import com.waracle.cakemgr.CakeEntity;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.waracle.cakemgr.entity.CakeEntity;
 import io.cucumber.java.DataTableType;
 import io.cucumber.java.en.Given;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 import java.util.Map;
 
 public class DataSteps {
 
+    @Autowired
+    private ObjectMapper objectMapper;
+
     @DataTableType
     public CakeEntity transformCake(Map<String, String> entry) {
-        // TODO Add fields to entity
-        CakeEntity cakeEntity = new CakeEntity();
-        return cakeEntity;
+        return objectMapper.convertValue(entry, CakeEntity.class);
     }
 
     @Given("^the following cakes:$")

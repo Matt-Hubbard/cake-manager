@@ -9,6 +9,7 @@ sourceSets {
 
 configurations {
     integrationTestImplementation.extendsFrom implementation
+    integrationTestAnnotationProcessor.extendsFrom annotationProcessor
     integrationTestRuntimeOnly.extendsFrom runtimeOnly
 }
 
