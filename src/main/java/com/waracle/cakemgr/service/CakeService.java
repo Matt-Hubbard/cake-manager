@@ -1,6 +1,7 @@
 package com.waracle.cakemgr.service;
 
 import com.waracle.cakemgr.dto.CakeDto;
+import com.waracle.cakemgr.entity.CakeEntity;
 import com.waracle.cakemgr.repository.CakeRepository;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
@@ -26,6 +27,8 @@ public class CakeService {
     }
 
     public CakeDto createCake(CakeDto cakeDto) {
-        throw new UnsupportedOperationException();
+
+
+        return modelMapper.map(cakeRepository.save(modelMapper.map(cakeDto, CakeEntity.class)), CakeDto.class);
     }
 }

@@ -21,7 +21,7 @@ public class CakeEntity implements Serializable {
     @Column(name = "TITLE", unique = false, nullable = false, length = 100)
     private String title;
 
-    @JsonAlias("desc")
+    @JsonAlias("desc") // Allow downloaded data to be serialised
     @Column(name = "DESCRIPTION", unique = false, nullable = false, length = 100)
     private String description;
 

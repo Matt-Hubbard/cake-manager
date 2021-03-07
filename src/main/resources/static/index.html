@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Cake Manager</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.23/css/jquery.dataTables.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="//cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
+    <script src="/js/datatable.js"></script>
+</head>
+<body>
+<h1>Cake Manager</h1>
+
+<a href="http://localhost:8282/logout">Log Out</a>
+
+<h2>Add Cake</h2>
+<form id="addCakeForm">
+    <label for="title">Title:</label><br>
+    <input type="text" id="title" name="title" value="Chocolate Cake"><br>
+    <label for="description">Description</label><br>
+    <input type="text" id="description" name="description" value="mmmmm cake"><br>
+    <label for="image">Image:</label><br>
+    <input type="text" id="image" name="image"
+           value="https://preppykitchen.com/wp-content/uploads/2019/06/Chocolate-cake-recipe-1200a.jpg"><br>
+    <input type="submit" value="Add Cake"/>
+</form>
+
+<button id="refreshCakesButton">Refresh Cakes</button>
+
+<h2>Cakes Table</h2>
+<table id="cakesTable">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Image</th>
+    </tr>
+    </thead>
+</table>
+</body>
+</html>
