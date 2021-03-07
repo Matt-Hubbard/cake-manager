@@ -4,6 +4,7 @@
     <title>Cake Manager</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.23/css/jquery.dataTables.css">
+    <link rel="stylesheet" type="text/css" href="/css/cake.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="//cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
     <script src="/js/datatable.js"></script>
@@ -11,13 +12,15 @@
 <body>
 <h1>Cake Manager</h1>
 
-<a href="http://localhost:8282/logout">Log Out</a>
+<form action="http://localhost:8282/logout" class="button">
+    <input type="submit" value="Log Out"/>
+</form>
 
 <h2>Add Cake</h2>
 <form id="addCakeForm">
     <label for="title">Title:</label><br>
     <input type="text" id="title" name="title" value="Chocolate Cake"><br>
-    <label for="description">Description</label><br>
+    <label for="description">Description:</label><br>
     <input type="text" id="description" name="description" value="mmmmm cake"><br>
     <label for="image">Image:</label><br>
     <input type="text" id="image" name="image"
@@ -25,9 +28,9 @@
     <input type="submit" value="Add Cake"/>
 </form>
 
-<button id="refreshCakesButton">Refresh Cakes</button>
-
 <h2>Cakes Table</h2>
+
+<button id="refreshCakesButton" class="button">Refresh Cakes</button>
 <table id="cakesTable">
     <thead>
     <tr>

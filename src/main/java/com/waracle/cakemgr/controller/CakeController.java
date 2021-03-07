@@ -8,8 +8,11 @@ import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
+import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
 @RestController
 @RequestMapping("cakes")
@@ -19,7 +22,7 @@ public class CakeController {
     @Autowired
     private final CakeService cakeService;
 
-    @GetMapping
+    @GetMapping(produces = APPLICATION_JSON_VALUE)
     public CollectionModel<CakeDto> getAllCakes() {
         return CollectionModel.of(
                 cakeService.getAllCakes(),
@@ -27,9 +30,9 @@ public class CakeController {
         );
     }
 
-    @PostMapping
+    @PostMapping(consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
     public EntityModel<CakeDto> createCake(
-            @RequestBody CakeDto cakeDto
+            @Valid @RequestBody CakeDto cakeDto
     ) {
         return EntityModel.of(cakeService.createCake(cakeDto));
     }
