@@ -25,6 +25,11 @@ Bonus points:
 * Continuous Integration via any cloud CI system
 * Containerisation
 
+New Project Info
+=====================
+
+Please see README.md
+
 
 Original Project Info
 =====================
