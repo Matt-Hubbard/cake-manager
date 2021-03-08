@@ -24,6 +24,13 @@ label {
 	margin-bottom: 20px;
 }
 
+#errorLabel {
+	font-size: x-large;
+	font-family: Arial, Helvetica, sans-serif;
+	margin-bottom: 20px;
+	color: red
+}
+
 input[type=text] {
 	padding:10px;
 	border:0;
@@ -32,6 +39,7 @@ input[type=text] {
 	font-family: Arial, Helvetica, sans-serif;
 	margin-top: 10px;
 	margin-bottom: 10px;
+	width: 500px;
 }
 
 input[type=submit] {

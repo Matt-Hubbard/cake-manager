@@ -49,7 +49,6 @@ $(function() {
                 populateDataTable(myJsonData);
               },
               error: function (e) {
-                console.log("There was an error with your request...");
                 console.log("error: " + JSON.stringify(e));
               }
         });
@@ -73,6 +72,7 @@ $(function() {
         evt.preventDefault();
         var json = objectifyForm($('#addCakeForm').serializeArray());
         console.log(json);
+        $("#errorLabel").html('');
         $.ajax({
             url: 'http://localhost:8282/cakes',
             data: JSON.stringify(json),
@@ -83,8 +83,10 @@ $(function() {
                  console.log(result);
                  refreshCakeTable();
              },
-             error: function(xhr, resp, text) {
-                 console.log(xhr, resp, text);
+             error: function(e) {
+                 var message = e.responseJSON.errors[0].defaultMessage;
+                 console.log(message);
+                 $("#errorLabel").html(message);
              }
         });
     });
