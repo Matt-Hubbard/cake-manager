@@ -12,8 +12,8 @@
 <body>
 <h1>Cake Manager</h1>
 
-<form action="http://localhost:8282/logout" class="button">
-    <input type="submit" value="Log Out"/>
+<form action="http://localhost:8282/logout">
+    <input type="submit" value="Log Out" class="button"/>
 </form>
 
 <h2>Add Cake</h2>
@@ -25,13 +25,13 @@
     <label for="image">Image:</label><br>
     <input type="text" id="image" name="image"
            value="https://preppykitchen.com/wp-content/uploads/2019/06/Chocolate-cake-recipe-1200a.jpg"><br>
-    <input type="submit" value="Add Cake"/>
+    <input type="submit" value="Add Cake" class="button"/>
 </form>
 
 <h2>Cakes Table</h2>
 
 <button id="refreshCakesButton" class="button">Refresh Cakes</button>
-<table id="cakesTable">
+<table id="cakesTable" class="row-border">
     <thead>
     <tr>
         <th>ID</th>

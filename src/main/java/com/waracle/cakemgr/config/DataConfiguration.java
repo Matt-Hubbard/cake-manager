@@ -5,15 +5,20 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.waracle.cakemgr.entity.CakeEntity;
 import com.waracle.cakemgr.repository.CakeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import java.net.URL;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Configuration
 public class DataConfiguration {
+
+    @Value("${waracle.data.remove.duplicates:false}")
+    private boolean sanitiseData;
 
     @Autowired
     private ObjectMapper objectMapper;
@@ -26,8 +31,12 @@ public class DataConfiguration {
     @Bean
     public CommandLineRunner loadInitialData() {
         return args -> {
-            cakeRepository.saveAll(objectMapper.readValue(new URL(DATA_URL), new TypeReference<List<CakeEntity>>() {
-            }));
+            List<CakeEntity> cakeEntities = objectMapper.readValue(new URL(DATA_URL), new TypeReference<List<CakeEntity>>() {
+            });
+            if (sanitiseData) {
+                cakeEntities = cakeEntities.stream().distinct().collect(Collectors.toList());
+            }
+            cakeRepository.saveAll(cakeEntities);
         };
     }
 }

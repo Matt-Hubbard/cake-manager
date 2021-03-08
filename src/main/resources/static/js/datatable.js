@@ -33,6 +33,9 @@ $(function() {
                 }
             }
         ],
+        "createdRow": (row, data, dataIndex, cells) => {
+                $(row).css('background-color', '#eee')
+            }
     });
 
     function refreshCakeTable() {
@@ -78,6 +81,7 @@ $(function() {
             type: 'POST',
              success : function(result) {
                  console.log(result);
+                 refreshCakeTable();
              },
              error: function(xhr, resp, text) {
                  console.log(xhr, resp, text);
