@@ -12,6 +12,7 @@ import javax.validation.Valid;
 
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
+import static org.springframework.http.HttpStatus.CREATED;
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
 @RestController
@@ -30,6 +31,7 @@ public class CakeController {
         );
     }
 
+    @ResponseStatus(CREATED)
     @PostMapping(consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
     public EntityModel<CakeDto> createCake(
             @Valid @RequestBody CakeDto cakeDto
